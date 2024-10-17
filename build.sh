@@ -1,11 +1,9 @@
 #!/usr/bin/bash
 
 PACKAGE="guess"
-PLATFORMS=(
-    "windows/amd64" "linux/amd64" "darwin/amd64" "darwin/arm64"
-    "android/arm64"
-)
+PLATFORMS=("windows/amd64" "linux/amd64" "darwin/arm64" "android/arm64")
 OUTPUT_DIR="target"
+VERSION="1.0.0"
 
 IFS='/'  # Delimeter for platforms array
 
@@ -17,7 +15,7 @@ do
     GOOS=${plat[0]}
     GOARCH=${plat[1]}
     
-    output_name=$PACKAGE'-'$GOOS'-'$GOARCH
+    output_name=$PACKAGE'-'$VERSION'-'$GOOS'-'$GOARCH
     if [ "$GOOS" = "windows" ]; then
         output_name+='.exe'
     fi    
